@@ -1,3 +1,9 @@
+
+
+
+
+// Search town for current weather
+
 document.getElementById("searchBtn").addEventListener("click", ()=>{
     let searchVal=document.getElementById("searchTxt").value;
     let reop ={
@@ -16,7 +22,7 @@ document.getElementById("searchBtn").addEventListener("click", ()=>{
         //document.getElementById("weather").innerHTML=data.current.weather[0].description;
         document.getElementById("windLbl").innerHTML=data["current"]["wind_kph"]+[" km/h"];
         document.getElementById("humidityLbl").innerHTML=data["current"]["humidity"]+["%"];
-        document.getElementById("uv").innerHTML=data.current.uvi;
+        //document.getElementById("uv").innerHTML=data.current.uvi;
         document.getElementById("sunrise").innerHTML=data.current.sunrise;
         document.getElementById("sunset").innerHTML=data.current.sunset;
     })
