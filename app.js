@@ -2,9 +2,11 @@
 
 
 
-// Search town for current weather
 
-document.getElementById("searchBtn").addEventListener("click", ()=>{
+
+document.getElementById("searchBtn").addEventListener("click",()=>{
+    console.log("done");
+
     let searchVal=document.getElementById("searchTxt").value;
     let reop ={
         method:'GET'
