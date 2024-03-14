@@ -62,6 +62,7 @@
                 type="search"
                 aria-label="Search"
                 placeholder="Search City Name..."
+                autocomplete="off"
               />
               <button
                 id="searchBtn"
@@ -94,6 +95,7 @@
       <div class="topic">
         <h1>Current Weather</h1>
       </div>
+      <br>
       <!-- current card -->
       <section class="v-100">
         <div class="container py-5 h-100">
@@ -138,7 +140,7 @@
                       </div>
                       <div>
                         <i class="fas fa-sun fa-fw" style="color: #868b94"></i>
-                        <span class="ms-1"> 0.2h </span>
+                        <label for="">UV : </label><span id="uv" class="ms-1"> 0.2h </span>
                       </div>
                     </div>
                     <div>
@@ -157,7 +159,11 @@
 
       <hr class="py-5" />
 
+
+      <div class="topic col-12 ">
       <h1>FORECAST</h1>
+      </div>
+      <br><br><br>
 
       <!-- Forecast -->
 

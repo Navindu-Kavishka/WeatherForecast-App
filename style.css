@@ -30,6 +30,13 @@ body {
   font-weight: 600;
 }
 
+.topic{
+  background-color: chocolate;
+  padding: 20px;
+  text-align: center;
+  border-radius: 20px;
+}
+
 .date-container {
   font-weight: 100;
   background-color: #fff;

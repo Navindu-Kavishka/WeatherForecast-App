@@ -37,6 +37,7 @@ function getWeatherData () {
             console.log(data);
           
         })
+        
     })
 }
 
@@ -60,6 +61,7 @@ document.getElementById("searchBtn").addEventListener("click",()=>{
         document.getElementById("countryName").innerHTML = data["location"]["country"];
         document.getElementById("latitude").innerHTML=data["location"]["lat"];
         document.getElementById("longitude").innerHTML=data["location"]["lon"];
+        document.getElementById("uv").innerHTML=data["current"]["uv"];
         //document.getElementById("dateTime").innerHTML=data["current"]["localtime"];
         document.getElementById("tempLbl").innerHTML=data["current"]["temp_c"]+["°C"];
         document.getElementById("textLbl").innerHTML=data["current"]["condition"]["text"];
