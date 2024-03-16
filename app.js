@@ -75,8 +75,9 @@ document.getElementById("searchBtn").addEventListener("click",()=>{
         document.getElementById("windLbl").innerHTML=data["current"]["wind_kph"]+[" km/h"];
         document.getElementById("humidityLbl").innerHTML=data["current"]["humidity"]+["%"];
         
+        // Forcast
 
-         const dateForDate = new Date(`${data.forecast.forecastday[0].date}`);
+        const dateForDate = new Date(`${data.forecast.forecastday[0].date}`);
         let currentDay = new Date(dateForDate);
 
         for (let i = 0; i < 7; i++) {
@@ -101,6 +102,34 @@ document.getElementById("searchBtn").addEventListener("click",()=>{
             
         }
 
+        const dateFORdate = new Date(`${data.forecast.forecastday[0].date}`);
+        let currentday = new Date(dateFORdate);
+        
+
+        //console.log("test1");
+
+        //Reports
+        for (let i = 7; i > 0; i--) {
+            //console.log("test2");
+            
+            const splittedDate = currentday.toISOString().split("T")[0];
+                //console.log(splittedDate);
+            fetch(`http://api.weatherapi.com/v1/history.json?key=8e26f59da15a4d749df61737240203&q=${searchVal}&dt=${splittedDate}&aqi=homagama&alerts=yes`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                
+                document.getElementById(`img-${i}`).src = `${data.forecast.forecastday[0].day.condition.icon}`;
+                document.getElementById(`report-day-${i}`).innerHTML = `${data.forecast.forecastday[0].date}`;
+                document.getElementById(`report-temp-${i}`).innerHTML = `${data.forecast.forecastday[0].day.avgtemp_c} °C`;
+
+            })
+            .catch(error => {
+                console.error("Error",error);
+            });
+            currentday.setDate(currentday.getDate() - 1);
+            
+        }
 
 
 
