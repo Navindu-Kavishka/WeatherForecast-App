@@ -4,6 +4,7 @@ const dateE1 = document.getElementById("date");
 
 
 
+
 const days =['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Satureday'];
 const months=['January','February','March','April','May','June','July','August','September','October','November','December'];
 
@@ -29,31 +30,13 @@ setInterval(()=>{
   dateE1.innerHTML = days[day] + ', ' +dateWithleadingZero+' ' +months[month]
 }, 1000);
 
-getWeatherData();
-function getWeatherData () {
-    navigator.geolocation.getCurrentPosition((success)=> {
-        console.log(success);
-
-        let {latitude, longitude} = success.coords;
-
-        // fetch (`https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}&exclude=hourly,minutely&appid=${API_KEY}`)
-        // .then(res => res.json())
-        // .then(data => {
-        //     console.log(data);
-          
-        // })
-        
-    })
-}
-
-
 
 
 
 document.getElementById("searchBtn").addEventListener("click",()=>{
     //console.log("done");
-
-    let searchVal=document.getElementById("searchTxt").value;
+    const searchVal=document.getElementById("searchTxt").value;
+   
     let reop ={
         method:'GET'
     };
@@ -61,20 +44,10 @@ document.getElementById("searchBtn").addEventListener("click",()=>{
     fetch(`https://api.weatherapi.com/v1/forecast.json?key=8e26f59da15a4d749df61737240203&q=${searchVal}&days=7`,reop)
     .then(responce=>responce.json())
     .then(data=>{
-        console.log(data);
-        document.getElementById("cityName").innerHTML=data["location"]["name"];
-        document.getElementById("countryName").innerHTML = data["location"]["country"];
-        document.getElementById("latitude").innerHTML=data["location"]["lat"];
-        document.getElementById("longitude").innerHTML=data["location"]["lon"];
-        document.getElementById("uv").innerHTML=data["current"]["uv"];
-        //document.getElementById("dateTime").innerHTML=data["current"]["localtime"];
-        document.getElementById("tempLbl").innerHTML=data["current"]["temp_c"]+["°C"];
-        document.getElementById("textLbl").innerHTML=data["current"]["condition"]["text"];
-        document.getElementById("img").src=data["current"]["condition"]["icon"];
-        //document.getElementById("weather").innerHTML=data.current.weather[0].description;
-        document.getElementById("windLbl").innerHTML=data["current"]["wind_kph"]+[" km/h"];
-        document.getElementById("humidityLbl").innerHTML=data["current"]["humidity"]+["%"];
         
+        //current Weather
+        currentWeather(searchVal);
+
         // Forcast
 
         const dateForDate = new Date(`${data.forecast.forecastday[0].date}`);
@@ -111,7 +84,7 @@ document.getElementById("searchBtn").addEventListener("click",()=>{
         //Reports
         for (let i = 7; i > 0; i--) {
             //console.log("test2");
-            
+
             const splittedDate = currentday.toISOString().split("T")[0];
                 //console.log(splittedDate);
             fetch(`http://api.weatherapi.com/v1/history.json?key=8e26f59da15a4d749df61737240203&q=${searchVal}&dt=${splittedDate}&aqi=homagama&alerts=yes`)
@@ -136,19 +109,33 @@ document.getElementById("searchBtn").addEventListener("click",()=>{
 
 
     })
-
-
-
-    //past  5 days
-
-    
-
-
-    
-
-
 })
 
+
+
+function currentWeather (searchVal){
+    let reop ={
+        method:'GET'
+    };
+    //let searchVal=document.getElementById("searchTxt").value;
+    fetch(`https://api.weatherapi.com/v1/forecast.json?key=8e26f59da15a4d749df61737240203&q=${searchVal}&days=7`,reop)
+    .then(responce=>responce.json())
+    .then(data=>{
+        console.log(data);
+        document.getElementById("cityName").innerHTML=data["location"]["name"];
+        document.getElementById("countryName").innerHTML = data["location"]["country"];
+        document.getElementById("latitude").innerHTML=data["location"]["lat"];
+        document.getElementById("longitude").innerHTML=data["location"]["lon"];
+        document.getElementById("uv").innerHTML=data["current"]["uv"];
+        //document.getElementById("dateTime").innerHTML=data["current"]["localtime"];
+        document.getElementById("tempLbl").innerHTML=data["current"]["temp_c"]+["°C"];
+        document.getElementById("textLbl").innerHTML=data["current"]["condition"]["text"];
+        document.getElementById("img").src=data["current"]["condition"]["icon"];
+        //document.getElementById("weather").innerHTML=data.current.weather[0].description;
+        document.getElementById("windLbl").innerHTML=data["current"]["wind_kph"]+[" km/h"];
+        document.getElementById("humidityLbl").innerHTML=data["current"]["humidity"]+["%"];
+    }) 
+}
 
 
 
