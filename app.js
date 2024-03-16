@@ -37,6 +37,7 @@ let longitude;
 
 function getWeatherData () {
     navigator.geolocation.getCurrentPosition(showLocation);
+
     
 }
 
@@ -45,7 +46,8 @@ function showLocation(position) {
     longitude = position.coords.longitude;
     
     currentWeather(latitude+ "," + longitude);
-    
+    forecastData(latitude+ "," + longitude);
+    reportData(latitude+ "," + longitude);
 }
 
 
@@ -66,60 +68,12 @@ document.getElementById("searchBtn").addEventListener("click",()=>{
         currentWeather(searchVal);
 
         // Forcast
-
-        const dateForDate = new Date(`${data.forecast.forecastday[0].date}`);
-        let currentDay = new Date(dateForDate);
-
-        for (let i = 0; i < 7; i++) {
-          const splittedDate = currentDay.toISOString().split("T")[0];
-
-          fetch(
-            `https://api.weatherapi.com/v1/forecast.json?key=8e26f59da15a4d749df61737240203&q=${searchVal}&days=7&dt=${splittedDate}&aqi=homagama&alerts=yes`
-          )
-            .then((res) => res.json())
-            .then((data) => {
-                //console.log(data);
-
-                document.getElementById(`icon-${i+1}`).src = `${data.forecast.forecastday[0].day.condition.icon}`;
-                document.getElementById(`forecast-day-${i+1}`).innerHTML = `${data.forecast.forecastday[0].date}`;
-                document.getElementById(`forecast-temp-${i+1}`).innerHTML = `${data.forecast.forecastday[0].day.avgtemp_c} °C`;
-
-            })
-            .catch(error => {
-                console.error("Error",error);
-            });
-            currentDay.setDate(currentDay.getDate() + 1);
-            
-        }
-
-        const dateFORdate = new Date(`${data.forecast.forecastday[0].date}`);
-        let currentday = new Date(dateFORdate);
+        forecastData(searchVal);
         
+        // 7 days histoty weather report
+        reportData(searchVal);
 
-        //console.log("test1");
-
-        //Reports
-        for (let i = 7; i > 0; i--) {
-            //console.log("test2");
-
-            const splittedDate = currentday.toISOString().split("T")[0];
-                //console.log(splittedDate);
-            fetch(`http://api.weatherapi.com/v1/history.json?key=8e26f59da15a4d749df61737240203&q=${searchVal}&dt=${splittedDate}&aqi=homagama&alerts=yes`)
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                
-                document.getElementById(`img-${i}`).src = `${data.forecast.forecastday[0].day.condition.icon}`;
-                document.getElementById(`report-day-${i}`).innerHTML = `${data.forecast.forecastday[0].date}`;
-                document.getElementById(`report-temp-${i}`).innerHTML = `${data.forecast.forecastday[0].day.avgtemp_c} °C`;
-
-            })
-            .catch(error => {
-                console.error("Error",error);
-            });
-            currentday.setDate(currentday.getDate() - 1);
-            
-        }
+        
 
 
 
@@ -154,6 +108,80 @@ function currentWeather (searchVal){
     }) 
 }
 
+function forecastData(searchVal){
+    let reop ={
+        method:'GET'
+    };
+    //let searchVal=document.getElementById("searchTxt").value;
+    fetch(`https://api.weatherapi.com/v1/forecast.json?key=8e26f59da15a4d749df61737240203&q=${searchVal}&days=7`,reop)
+    .then(responce=>responce.json())
+    .then(data=>{
+        const dateForDate = new Date(`${data.forecast.forecastday[0].date}`);
+        let currentDay = new Date(dateForDate);
+
+        for (let i = 0; i < 7; i++) {
+          const splittedDate = currentDay.toISOString().split("T")[0];
+
+          fetch(
+            `https://api.weatherapi.com/v1/forecast.json?key=8e26f59da15a4d749df61737240203&q=${searchVal}&days=7&dt=${splittedDate}&aqi=homagama&alerts=yes`
+          )
+            .then((res) => res.json())
+            .then((data) => {
+                //console.log(data);
+
+                document.getElementById(`icon-${i+1}`).src = `${data.forecast.forecastday[0].day.condition.icon}`;
+                document.getElementById(`forecast-day-${i+1}`).innerHTML = `${data.forecast.forecastday[0].date}`;
+                document.getElementById(`forecast-temp-${i+1}`).innerHTML = `${data.forecast.forecastday[0].day.avgtemp_c} °C`;
+
+            })
+            .catch(error => {
+                console.error("Error",error);
+            });
+            currentDay.setDate(currentDay.getDate() + 1);
+            
+        }
+
+        
+        
+
+    }) 
+}
+
+
+function reportData(searchVal){
+    let reop ={
+        method:'GET'
+    };
+    //let searchVal=document.getElementById("searchTxt").value;
+    fetch(`https://api.weatherapi.com/v1/forecast.json?key=8e26f59da15a4d749df61737240203&q=${searchVal}&days=7`,reop)
+    .then(responce=>responce.json())
+    .then(data=>{
+        const dateFORdate = new Date(`${data.forecast.forecastday[0].date}`);
+        let currentday = new Date(dateFORdate);
+        //Reports
+        for (let i = 7; i > 0; i--) {
+            //console.log("test2");
+
+            const splittedDate = currentday.toISOString().split("T")[0];
+                //console.log(splittedDate);
+            fetch(`http://api.weatherapi.com/v1/history.json?key=8e26f59da15a4d749df61737240203&q=${searchVal}&dt=${splittedDate}&aqi=homagama&alerts=yes`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                
+                document.getElementById(`img-${i}`).src = `${data.forecast.forecastday[0].day.condition.icon}`;
+                document.getElementById(`report-day-${i}`).innerHTML = `${data.forecast.forecastday[0].date}`;
+                document.getElementById(`report-temp-${i}`).innerHTML = `${data.forecast.forecastday[0].day.avgtemp_c} °C`;
+
+            })
+            .catch(error => {
+                console.error("Error",error);
+            });
+            currentday.setDate(currentday.getDate() - 1);
+            
+        }
+    }) 
+}
 
 
 
