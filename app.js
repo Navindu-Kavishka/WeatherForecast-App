@@ -30,6 +30,23 @@ setInterval(()=>{
   dateE1.innerHTML = days[day] + ', ' +dateWithleadingZero+' ' +months[month]
 }, 1000);
 
+getWeatherData();
+
+let latitude;
+let longitude;
+
+function getWeatherData () {
+    navigator.geolocation.getCurrentPosition(showLocation);
+    
+}
+
+function showLocation(position) {
+    latitude = position.coords.latitude;
+    longitude = position.coords.longitude;
+    
+    currentWeather(latitude+ "," + longitude);
+    
+}
 
 
 
