@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
 
-  <body>
+  <body data-bs-theme="light">
     <!-- nav -->
     <nav class="navbar navbar-expand-lg navbar-light bg-body  ">
       <div class="container">
@@ -31,7 +31,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li class="nav-item">
+            <li class="nav-item ">
               <a class="nav-link" href="#current">CURRENT</a>
             </li>
             <li class="nav-item">
@@ -52,6 +52,20 @@
     </nav>
 
     <!-- end nav -->
+    <br><br><br>
+    <div class="row d-flex justify-content-center align-items-center h-100">
+    <div class= "py-5  date-container col-md-8 col-lg-6 col-xl-6">
+      <div id="time" class="time">
+        12.30 <span id="am-pm">PM</span>
+      </div>
+      <div id="date" class="date">
+        Monday, 15 March
+      </div>
+    </div>
+  </div>
+  <br>
+
+  
 
     <!-- search -->
     <div class="search-container">
@@ -69,7 +83,7 @@
               />
               <button
                 id="searchBtn"
-                class="btn btn-outline-success"
+                class="btn btn btn-primary"
                 type="submit"
               >
                 Search
@@ -82,19 +96,10 @@
 
     <!-- end-search -->
 
-    <div class="row d-flex justify-content-center align-items-center h-100">
-    <div class= "py-5  date-container col-md-8 col-lg-6 col-xl-6">
-      <div id="time" class="time">
-        12.30 <span id="am-pm">PM</span>
-      </div>
-      <div id="date" class="date">
-        Monday, 15 March
-      </div>
-    </div>
-  </div>
-
 
     <div class="main">
+
+      <div class="box">
 
 <section id="current">
 
@@ -129,7 +134,7 @@
                     >
                       13°C
                     </h6>
-                    <span id="textLbl" class="small" style="color: #868b94"
+                    <span id="textLbl" class="small" style="color: #f1f2f4"
                       >Stormy</span
                     >
                   </div>
@@ -160,12 +165,14 @@
         </div>
       </section>
     </section>
+  </div>
       <!-- end current card -->
 
-      
+      <br><br><br>
 
-      <hr class="py-5" />
+      <!-- <hr class="py-5" /> -->
 
+      <div class="box">
 <section id="forecast">
       <div class="topic col-12 ">
       <h1>FORECAST</h1>
@@ -178,57 +185,61 @@
 
         <article id="day-1" class="forecast-item">
           <img src="img/cloud.webp" alt="cloud" id="icon-1" class="forecast-icon">
-          <h3  id="forecast-day-1" class="forecast-day">Monday</h3>
+          <h4  id="forecast-day-1" class="forecast-day">Monday</h4 >
           <p class="forecast-temp"><span id="forecast-temp-1"  class="value">+25</span></p>
         </article>
 
         <article id="day-2" class="forecast-item">
           <img src="img/cloud.webp" alt="cloud" id="icon-2" class="forecast-icon">
-          <h3 id="forecast-day-2" class="forecast-day">Tuesday</h3>
+          <h4 id="forecast-day-2" class="forecast-day">Tuesday</h4>
           <p class="forecast-temp"><span id="forecast-temp-2"  class="value">+25</span></p>
         </article>
 
         <article id="day-3" class="forecast-item">
           <img src="img/cloud.webp" alt="cloud" id="icon-3" class="forecast-icon">
-          <h3 id="forecast-day-3" class="forecast-day">Wednesday</h3>
+          <h4 id="forecast-day-3" class="forecast-day">Wednesday</h4>
           <p class="forecast-temp"><span id="forecast-temp-3"  class="value">+25</span></p>
         </article>
 
         <article id="day-4" class="forecast-item">
           <img src="img/cloud.webp" alt="cloud" id="icon-4" class="forecast-icon">
-          <h3 id="forecast-day-4" class="forecast-day">Thursday</h3>
+          <h4 id="forecast-day-4" class="forecast-day">Thursday</h4>
           <p class="forecast-temp"><span id="forecast-temp-4"  class="value">+25</span></p>
         </article>
 
         <article id="day-5" class="forecast-item">
           <img src="img/cloud.webp" alt="cloud" id="icon-5" class="forecast-icon">
-          <h3 id="forecast-day-5" class="forecast-day">Friday</h3>
+          <h4 id="forecast-day-5" class="forecast-day">Friday</h4>
           <p class="forecast-temp"><span id="forecast-temp-5"  class="value">+25</span></p>
         </article>
 
         <article id="day-6" class="forecast-item">
           <img src="img/cloud.webp" alt="cloud" id="icon-6" class="forecast-icon">
-          <h3 id="forecast-day-6" class="forecast-day">Saturday</h3>
+          <h4 id="forecast-day-6" class="forecast-day">Saturday</h4>
           <p class="forecast-temp"><span id="forecast-temp-6"  class="value">+25</span></p>
         </article>
 
         <article id="day-7" class="forecast-item">
           <img src="img/cloud.webp" alt="cloud" id="icon-7" class="forecast-icon">
-          <h3 id="forecast-day-7" class="forecast-day">Sunday</h3>
+          <h4 id="forecast-day-7" class="forecast-day">Sunday</h4>
           <p class="forecast-temp"><span id="forecast-temp-7"  class="value">+25</span></p>
         </article>
 
       </div>
     </section>
+    <br><br><br>
+    <!-- end Forecast -->
+  </div>
 
-      <!-- ///////////////////////////////////////////////////////// -->
+    <br><br><br><br><br>
 
 
 
 
 
-      <hr class="py-5" />
+      <!-- <hr class="py-5" /> -->
 
+      <div class="box">
       <section id="report">
 
       <div class="topic col-12 ">
@@ -242,37 +253,37 @@
 
         <article class="forecast-item report">
           <img src="img/cloud.webp" alt="cloud" id="img-1" class="forecast-icon">
-          <h3  id="report-day-1" class="forecast-day">Monday</h3>
+          <h4  id="report-day-1" class="forecast-day">Monday</h4>
           <p class="forecast-temp"><span id="report-temp-1"  class="value">+25</span></p>
         </article>
 
         <article class="forecast-item report">
           <img src="img/cloud.webp" alt="cloud" id="img-2" class="forecast-icon">
-          <h3 id="report-day-2" class="forecast-day">Tuesday</h3>
+          <h4 id="report-day-2" class="forecast-day">Tuesday</h4>
           <p class="forecast-temp"><span id="report-temp-2"  class="value">+25</span></p>
         </article>
 
         <article class="forecast-item report">
           <img src="img/cloud.webp" alt="cloud" id="img-3" class="forecast-icon">
-          <h3 id="report-day-3" class="forecast-day">Wednesday</h3>
+          <h4 id="report-day-3" class="forecast-day">Wednesday</h4>
           <p class="forecast-temp"><span id="report-temp-3"  class="value">+25</span></p>
         </article>
 
         <article class="forecast-item report">
           <img src="img/cloud.webp" alt="cloud" id="img-4" class="forecast-icon">
-          <h3 id="report-day-4" class="forecast-day">Thursday</h3>
+          <h4 id="report-day-4" class="forecast-day">Thursday</h4>
           <p class="forecast-temp"><span id="report-temp-4"  class="value">+25</span></p>
         </article>
 
         <article class="forecast-item report">
           <img src="img/cloud.webp" alt="cloud" id="img-5" class="forecast-icon">
-          <h3 id="report-day-5" class="forecast-day">Friday</h3>
+          <h4 id="report-day-5" class="forecast-day">Friday</h4>
           <p class="forecast-temp"><span id="report-temp-5"  class="value">+25</span></p>
         </article>
 
         <article class="forecast-item report">
           <img src="img/cloud.webp" alt="cloud" id="img-6" class="forecast-icon">
-          <h3 id="report-day-6" class="forecast-day">Saturday</h3>
+          <h4 id="report-day-6" class="forecast-day">Saturday</h4>
           <p class="forecast-temp"><span id="report-temp-6"  class="value">+25</span></p>
         </article>
 
@@ -284,6 +295,12 @@
 
       </div>
     </section>
+    <br><br><br>
+  </div>
+
+  <!-- end reports -->
+
+  <br><br><br>
 
     <section id="map">
 

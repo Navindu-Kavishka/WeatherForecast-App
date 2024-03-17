@@ -5,7 +5,7 @@ body {
   font-family: "Outfit", sans-serif;
   /* background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),
     url("img/bg.jpg"); */
-  background: linear-gradient(1deg,#a6d5ec,#adabb8);
+  background: linear-gradient(100deg,#a6d5ec,#adabb8);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -14,6 +14,7 @@ body {
 
 .navbar-light .navbar-nav .nav-link {
   color: black;
+  
 }
 
 .search {
@@ -24,7 +25,9 @@ body {
   font-style: 20px;
   color: inherit;
   border-radius: 10px;
+  color: white;
 }
+
 
 .search::placeholder {
   color: #fff;
@@ -33,13 +36,19 @@ body {
 
 .card{
   background: linear-gradient(135deg,#00feba,#5b548a);
+  font-size: 25px;
+  
 }
 
 .topic{
-  background-color: chocolate;
-  padding: 20px;
+  background-color: rgb(0, 0, 0);
+  padding: 15px;
   text-align: center;
   border-radius: 20px;
+  color: #fff;
+  border: 5px;
+  border-style: double;
+  border-color: #fff;
 }
 
 .date-container {
@@ -99,10 +108,19 @@ body {
   padding: 30px 5px 20px;
   box-sizing: border-box;
   min-width: 150px;
-  width: calc(20% - 20px);
+  width: calc(2% - 20px);
+  height: 200px;
   flex-grow: 1;
 }
 
 .report{
   background: linear-gradient(135deg,#360dd8,#7263ce);
+}
+
+
+.box{
+  background-color: rgba(255, 255, 255, 0.15);
+  padding: 2px;
+  border-radius: 20px;
+  box-shadow: #fff 0px 0px 10px;
 }
