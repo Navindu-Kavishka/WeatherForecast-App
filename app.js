@@ -152,6 +152,7 @@ function reportData(searchVal){
     let reop ={
         method:'GET'
     };
+    
     //let searchVal=document.getElementById("searchTxt").value;
     fetch(`https://api.weatherapi.com/v1/forecast.json?key=8e26f59da15a4d749df61737240203&q=${searchVal}&days=7`,reop)
     .then(responce=>responce.json())
@@ -164,7 +165,7 @@ function reportData(searchVal){
 
             const splittedDate = currentday.toISOString().split("T")[0];
                 //console.log(splittedDate);
-            fetch(`http://api.weatherapi.com/v1/history.json?key=8e26f59da15a4d749df61737240203&q=${searchVal}&dt=${splittedDate}&aqi=homagama&alerts=yes`)
+            fetch(`http://api.weatherapi.com/v1/history.json?key=8e26f59da15a4d749df61737240203&q=${searchVal}&dt=${splittedDate}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data);

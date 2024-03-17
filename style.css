@@ -3,8 +3,9 @@
 body {
   background-color: black;
   font-family: "Outfit", sans-serif;
-  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),
-    url("img/bg.jpg");
+  /* background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),
+    url("img/bg.jpg"); */
+  background: linear-gradient(1deg,#a6d5ec,#adabb8);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -30,6 +31,10 @@ body {
   font-weight: 600;
 }
 
+.card{
+  background: linear-gradient(135deg,#00feba,#5b548a);
+}
+
 .topic{
   background-color: chocolate;
   padding: 20px;
@@ -39,7 +44,7 @@ body {
 
 .date-container {
   font-weight: 100;
-  background-color: #fff;
+  background-color: rgb(229, 231, 234);
   text-align: center;
   border-radius: 20px;
   
@@ -88,7 +93,7 @@ body {
 }
 
 .forecast-item {
-  background-color: rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg,#1b9ddd,#7263ce);
   border-radius: 10px;
   margin: 0 10px 10px;
   padding: 30px 5px 20px;
@@ -96,4 +101,8 @@ body {
   min-width: 150px;
   width: calc(20% - 20px);
   flex-grow: 1;
+}
+
+.report{
+  background: linear-gradient(135deg,#360dd8,#7263ce);
 }
